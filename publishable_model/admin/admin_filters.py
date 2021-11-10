@@ -44,7 +44,7 @@ class IsPublishedFilter(SimpleBooleanListFilter):
     parameter_name = 'is_published'
 
     def get_true_queryset_values(self, queryset):
-        raise queryset.published_items()
+        return queryset.published_items()
 
     def get_false_queryset_values(self, queryset):
-        raise queryset.draft_items()
+        return queryset.draft_items()

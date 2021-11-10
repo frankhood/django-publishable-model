@@ -45,3 +45,8 @@ output/*/index.html
 
 # Sphinx
 docs/_build
+
+
+.coverage
+.tox
+.python-version

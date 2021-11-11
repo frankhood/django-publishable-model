@@ -2,14 +2,15 @@
 Django Publishable Model
 =============================
 
-.. image:: https://badge.fury.io/py/django-publishable-model.svg
+.. image:: https://badge.fury.io/py/django-publishable-model.svg/?style=flat-square
     :target: https://badge.fury.io/py/django-publishable-model
 
-.. image:: https://travis-ci.org/frankhood/django-publishable-model.svg?branch=master
-    :target: https://travis-ci.org/frankhood/django-publishable-model
+.. image:: https://readthedocs.org/projects/pip/badge/?version=latest&style=flat-square
+    :target: https://django-publishable-model.readthedocs.io/en/latest/
 
-.. image:: https://codecov.io/gh/frankhood/django-publishable-model/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/frankhood/django-publishable-model
+.. image:: https://img.shields.io/coveralls/github/frankhood/django-publishable-model/master?style=flat-square
+    :target: https://coveralls.io/github/frankhood/django-publishable-model?branch=master
+    :alt: Coverage Status
 
 Make your models publishable in an easy way, the admin will be smart and easily configurable
 
@@ -76,7 +77,7 @@ Does the code actually work?
 
 
 Development commands
----------------------
+--------------------
 
 ::
     pip install -r requirements_dev.txt

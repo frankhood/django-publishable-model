@@ -42,7 +42,7 @@ Features
 * Handle of Django Model's publication.
 
 Example of usage
--------------
+----------------
 .. code-block:: python
 
     from publishable_model.models import PublishableModel

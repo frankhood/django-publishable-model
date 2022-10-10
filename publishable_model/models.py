@@ -2,15 +2,16 @@
 import django
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 
 from . import managers as app_managers
 from . import settings as app_settings
 
 if django.VERSION[0] < 3:
-    from django.utils.translation import ugettext
+    from django.utils.translation import ugettext as gettext
+    from django.utils.translation import ugettext_lazy as _
 else:
-    from django.utils.translation import gettext as ugettext
+    from django.utils.translation import gettext as gettext
+    from django.utils.translation import gettext_lazy as _
 
 
 class PublishableModel(models.Model):

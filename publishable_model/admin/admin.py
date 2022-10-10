@@ -11,9 +11,11 @@ from publishable_model.admin.admin_filters import IsPublishedFilter
 
 
 if django.VERSION[0] < 3:
-    from django.utils.translation import ungettext
+    from django.utils.translation import ugettext as gettext
+    from django.utils.translation import ugettext_lazy as _
 else:
-    from django.utils.translation import ngettext as ungettext
+    from django.utils.translation import gettext as gettext
+    from django.utils.translation import gettext_lazy as _
 
 
 class PublishableModelAdmin(admin.ModelAdmin):

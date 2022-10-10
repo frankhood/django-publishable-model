@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.utils import formats, timezone
 
-from django.utils.translation import ungettext, ugettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from publishable_model import settings as app_settings
@@ -127,7 +127,7 @@ class PublishableModelAdmin(admin.ModelAdmin):
         )
         self.message_user(
             request,
-            ungettext(
+            gettext(
                 "%(count)d entries was published",
                 "%(count)d entries where published",
                 rows_updated,
@@ -145,7 +145,7 @@ class PublishableModelAdmin(admin.ModelAdmin):
         )
         self.message_user(
             request,
-            ungettext(
+            gettext(
                 "%(count)d entries was unpublished",
                 "%(count)d entries where unpublished",
                 rows_updated,

@@ -7,7 +7,7 @@ from django.utils.translation import ungettext, ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from publishable_model import settings as app_settings
-from publishable_model.admin_filters import IsPublishedFilter
+from publishable_model.admin.admin_filters import IsPublishedFilter
 
 
 class PublishableModelAdmin(admin.ModelAdmin):

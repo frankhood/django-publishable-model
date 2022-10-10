@@ -11,10 +11,10 @@ from publishable_model.admin.admin_filters import IsPublishedFilter
 
 
 if django.VERSION[0] < 3:
-    from django.utils.translation import ugettext as gettext
+    from django.utils.translation import ungettext as ngettext
     from django.utils.translation import ugettext_lazy as _
 else:
-    from django.utils.translation import gettext as gettext
+    from django.utils.translation import ngettext as ngettext
     from django.utils.translation import gettext_lazy as _
 
 
@@ -93,7 +93,7 @@ class PublishableModelAdmin(admin.ModelAdmin):
             status=app_settings.PUBLICATION_STATUS_PUBLISHED,
             publication_start=timezone.now(),
             publication_end=None)
-        self.message_user(request, ungettext('%(count)d entries was published',
+        self.message_user(request, ngettext('%(count)d entries was published',
                                              '%(count)d entries where published',
                                              rows_updated) % {'count': rows_updated})
 
@@ -104,7 +104,7 @@ class PublishableModelAdmin(admin.ModelAdmin):
             status=app_settings.PUBLICATION_STATUS_DRAFT,
             publication_start=None,
             publication_end=None)
-        self.message_user(request, ungettext('%(count)d entries was unpublished',
+        self.message_user(request, ngettext('%(count)d entries was unpublished',
                                              '%(count)d entries where unpublished',
                                              rows_updated) % {'count': rows_updated})
 

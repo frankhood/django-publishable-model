@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib import messages
 from django.contrib.admin.filters import SimpleListFilter
+
+if django.VERSION[0] < 3:
+    from django.utils.translation import ungettext as ngettext
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import ngettext as ngettext
+    from django.utils.translation import gettext_lazy as _
 
 
 class SimpleBooleanListFilter(SimpleListFilter):

@@ -2,7 +2,13 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from django.contrib import admin
-from django.utils.translation import ugettext, ugettext_lazy as _
+
+if django.VERSION[0] < 3:
+    from django.utils.translation import ungettext as ngettext
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import ngettext as ngettext
+    from django.utils.translation import gettext_lazy as _
 
 from publishable_model.admin import PublishableModelAdmin
 

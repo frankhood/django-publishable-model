@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
+import django
 from django.contrib import admin
 from django.utils import formats
 from django.utils.safestring import mark_safe
-from django.utils.translation import ungettext, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-from django.utils.timezone import localtime, get_current_timezone
 
-from .. import settings as app_settings
-from .admin_filters import IsPublishedFilter
+from publishable_model import settings as app_settings
+from publishable_model.admin.admin_filters import IsPublishedFilter
+
+
+if django.VERSION[0] < 3:
+    from django.utils.translation import ungettext
+else:
+    from django.utils.translation import ngettext as ungettext
 
 
 class PublishableModelAdmin(admin.ModelAdmin):
@@ -47,14 +53,14 @@ class PublishableModelAdmin(admin.ModelAdmin):
     display_actual_status.boolean = True
 
     def display_publication_start(self, obj=None):
-        return formats.date_format(localtime(obj.publication_start, get_current_timezone()),
+        return formats.date_format(timezone.localtime(obj.publication_start, timezone.get_current_timezone()),
                                    "SHORT_DATETIME_FORMAT") if obj.publication_start else ""
 
     display_publication_start.short_description = _('Publication Start Date')
     display_publication_start.admin_order_field = 'publication_start'
 
     def display_publication_end(self, obj=None):
-        return formats.date_format(localtime(obj.publication_end, get_current_timezone()),
+        return formats.date_format(timezone.localtime(obj.publication_end, timezone.get_current_timezone()),
                                    "SHORT_DATETIME_FORMAT") if obj.publication_end else ""
 
     display_publication_end.short_description = _('Publication End Date')
@@ -66,11 +72,11 @@ class PublishableModelAdmin(admin.ModelAdmin):
         if obj and obj.id:
             if obj.publication_start:
                 dt += "{0} {1}" \
-                      "".format(_("From"), formats.date_format(localtime(obj.publication_start, get_current_timezone()),
+                      "".format(_("From"), formats.date_format(timezone.localtime(obj.publication_start, timezone.get_current_timezone()),
                                                                "SHORT_DATETIME_FORMAT"))
                 if obj.publication_end:
                     dt += "<br>{0} {1}" \
-                          "".format(_("To"), formats.date_format(localtime(obj.publication_end, get_current_timezone()),
+                          "".format(_("To"), formats.date_format(timezone.localtime(obj.publication_end, timezone.get_current_timezone()),
                                                                  "SHORT_DATETIME_FORMAT"))
         return mark_safe(dt)
 
